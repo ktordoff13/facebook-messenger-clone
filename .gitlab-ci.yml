@@ -1,0 +1,16 @@
+image: node:12.13.0-alpine
+
+before_script:
+  - npm i
+  - npm i -g firebase-tools
+  - CI=false npm run build
+
+firebase deploy:
+  stage: deploy
+  script:
+    - firebase deploy --token $FIREBASE_TOKEN
+  only:
+    - master
+  environment:
+    name: production
+    url: facebook-messenger-clone-5512a.web.app
