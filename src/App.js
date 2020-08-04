@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Button, FormControl, InputLabel, Input } from "@material-ui/core";
+import { FormControl, Input } from "@material-ui/core";
 import FlipMove from "react-flip-move";
 import Message from "./Message";
 import "./App.css";
 import db from "./firebase";
 import firebase from "firebase";
+import SendIcon from "@material-ui/icons/Send";
+import { IconButton } from "@material-ui/core";
 
 function App() {
   const [input, setInput] = useState("");
@@ -38,26 +40,36 @@ function App() {
 
   return (
     <div className="App">
-      <h1> Messenger </h1>
+      <img
+        className="app__logo"
+        src="https://s3-eu-west-1.amazonaws.com/userlike-cdn-blog/benefits-of-live-chat/chat-benefits.png"
+        alt="chat-logo"
+      ></img>
+      <h1> Demo Chat App </h1>
       <h2>Welcome {username}</h2>
-      <form>
-        <FormControl>
-          <InputLabel>Enter a message...</InputLabel>
+
+      <form className="app__form">
+        <FormControl className="app__formControl">
           <Input
+            className="app__input"
+            placeholder="Enter message..."
             value={input}
             onChange={(event) => setInput(event.target.value)}
           />
-          <Button
+
+          <IconButton
+            className="app__iconButton"
             disabled={!input}
             variant="contained"
             color="primary"
             type="submit"
             onClick={sendMessage}
           >
-            Send Message
-          </Button>
+            <SendIcon />
+          </IconButton>
         </FormControl>
       </form>
+
       <FlipMove>
         {messages.map(({ id, message }) => (
           <Message key={id} username={username} message={message} />
