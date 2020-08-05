@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { FormControl, Input } from "@material-ui/core";
 import FlipMove from "react-flip-move";
+import styled, { keyframes } from "styled-components";
 import Message from "./Message";
 import "./App.css";
 import db from "./firebase";
 import firebase from "firebase";
 import SendIcon from "@material-ui/icons/Send";
 import { IconButton } from "@material-ui/core";
+import { bounce } from "react-animations";
 
 function App() {
+  const Bounce = styled.div`
+    animation: 2s ${keyframes`${bounce}`};
+  `;
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
   const [username, setUsername] = useState("");
@@ -45,7 +50,9 @@ function App() {
         src="https://s3-eu-west-1.amazonaws.com/userlike-cdn-blog/benefits-of-live-chat/chat-benefits.png"
         alt="chat-logo"
       ></img>
-      <h1>Not Facebook Messenger</h1>
+      <Bounce>
+        <h1>Not Facebook Messenger</h1>
+      </Bounce>
       <h2>Welcome {username}</h2>
 
       <form className="app__form">
