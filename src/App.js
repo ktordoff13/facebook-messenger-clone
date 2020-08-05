@@ -45,7 +45,7 @@ function App() {
         src="https://s3-eu-west-1.amazonaws.com/userlike-cdn-blog/benefits-of-live-chat/chat-benefits.png"
         alt="chat-logo"
       ></img>
-      <h1> Demo Chat App </h1>
+      <h1>Not Facebook Messenger</h1>
       <h2>Welcome {username}</h2>
 
       <form className="app__form">
